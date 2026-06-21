@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>爱游戏 · 温和而丰富的游戏世界</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+            line-height: 1.6;
+            color: #1f2a3a;
+            background: #f4f7fb;
+            min-height: 100vh;
+        }
+
+        /* 深色 hero 区 */
+        .hero {
+            background: linear-gradient(145deg, #0b1a2b 0%, #1b2e44 100%);
+            color: #e5edf5;
+            padding: 4rem 2rem 5rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -20px;
+            left: 0;
+            width: 100%;
+            height: 60px;
+            background: #f4f7fb;
+            border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            margin-bottom: 0.6rem;
+        }
+
+        .hero h1 span {
+            display: inline-block;
+            background: rgba(255, 215, 120, 0.15);
+            padding: 0 0.3em;
+            border-radius: 8px;
+            color: #f8d48a;
+        }
+
+        .hero p {
+            max-width: 680px;
+            margin: 1rem auto 2rem;
+            font-size: 1.15rem;
+            opacity: 0.85;
+        }
+
+        .hero .deco-line {
+            width: 60px;
+            height: 3px;
+            background: #f8d48a;
+            margin: 0.5rem auto 1.5rem;
+            border-radius: 4px;
+        }
+
+        /* 浅色正文区 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            padding: 3rem 0;
+        }
+
+        .section-title {
+            font-size: 1.9rem;
+            font-weight: 500;
+            letter-spacing: -0.01em;
+            margin-bottom: 2rem;
+            color: #0b1a2b;
+            border-left: 5px solid #f8d48a;
+            padding-left: 1.2rem;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.8rem;
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 32px rgba(0, 0, 0, 0.06);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 0.75rem;
+            color: #0b1a2b;
+        }
+
+        .card p {
+            color: #3d4f62;
+            font-size: 0.98rem;
+        }
+
+        .card .icon {
+            display: inline-block;
+            font-size: 1.6rem;
+            margin-bottom: 0.5rem;
+            background: #f0f4fa;
+            width: 44px;
+            height: 44px;
+            line-height: 44px;
+            text-align: center;
+            border-radius: 16px;
+        }
+
+        .text-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2.5rem 2.2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .text-block p {
+            margin-bottom: 1.2rem;
+            font-size: 1.02rem;
+            color: #1f2a3a;
+        }
+
+        .text-block p:last-child {
+            margin-bottom: 0;
+        }
+
+        .highlight-link {
+            color: #b5651e;
+            font-weight: 500;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(181, 101, 30, 0.3);
+            transition: border-color 0.15s, color 0.15s;
+        }
+
+        .highlight-link:hover {
+            color: #8c4b15;
+            border-bottom-color: #8c4b15;
+        }
+
+        .faq-summary {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem 2.2rem;
+            margin: 1.5rem 0;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.02);
+        }
+
+        .faq-item {
+            padding: 0.8rem 0;
+            border-bottom: 1px solid #e8edf4;
+        }
+
+        .faq-item:last-child {
+            border-bottom: 0;
+        }
+
+        .faq-q {
+            font-weight: 550;
+            color: #0b1a2b;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-a {
+            color: #3d4f62;
+            font-size: 0.96rem;
+        }
+
+        .footer-links {
+            padding: 2.5rem 0 3.5rem;
+            text-align: center;
+            border-top: 1px solid #dce3ed;
+            margin-top: 2rem;
+        }
+
+        .footer-links p {
+            font-size: 0.95rem;
+            color: #4a5c6e;
+            margin: 0.3rem 0;
+        }
+
+        .footer-links a {
+            color: #b5651e;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(181, 101, 30, 0.2);
+        }
+
+        .footer-links a:hover {
+            border-bottom-color: #b5651e;
+        }
+
+        @media (max-width: 640px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero {
+                padding: 3rem 1.2rem 4rem;
+            }
+            .container {
+                padding: 0 1.2rem;
+            }
+            .section-title {
+                font-size: 1.5rem;
+                padding-left: 0.8rem;
+            }
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+            .text-block,
+            .faq-summary {
+                padding: 1.8rem 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hero">
+        <h1>在 <span>爱游戏</span> 的世界里</h1>
+        <div class="deco-line"></div>
+        <p>我们不追赶风口，只愿为你搭建一处能安静沉浸、从容探索的角落。这里没有浮夸的宣言，只有温和而真实的陪伴。</p>
+    </div>
+
+    <main class="container">
+
+        <!-- 优势区 · 从关键词主题展开 -->
+        <section>
+            <h2 class="section-title">温和生长的游戏土壤</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="icon">🌱</div>
+                    <h3>内容如植物般自然</h3>
+                    <p>每一款游戏都经过审慎选择，不为热度妥协品质。我们相信好内容有自己的生长节奏，就像植物需要阳光与时间。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🧭</div>
+                    <h3>不打扰的探索路径</h3>
+                    <p>没有弹窗、浮层或夺目的诱导按钮。你只需要跟随自己的兴趣，安静地发现那些对味的游戏与故事。</p>
+                </div>
+                <div class="card">
+                    <div class="icon">🫂</div>
+                    <h3>同温层般的社区感</h3>
+                    <p>我们珍视每一个真实的交流与分享，这里鼓励有温度的讨论，而非喧嚣的声量竞赛。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 说明区 · 从关键词背后的主题展开 -->
+        <section>
+            <h2 class="section-title">为什么是「爱游戏」而非其他</h2>
+            <div class="text-block">
+                <p>很多人把游戏当作消遣，也有人把它视为严肃的第九艺术。而我们更愿意将它看作一种日常的呼吸——它不必时刻激昂，但可以始终陪伴。在 <a href="https://portal-official-igame.com" class="highlight-link">爱游戏</a> 的语境里，我们试图还原那份最初的、纯粹的兴致：不为通关而焦虑，不为排名而内耗，只是单纯地享受过程本身。</p>
+                <p>这种视角并不新鲜，却是最容易在商业浪潮中被忽略的。我们坚持呈现那些能让人放松下来、甚至产生思考的游戏，无论它是独立小品还是经典重制。每一款出现在这里的作品，都至少有一个值得我们反复回味的瞬间。</p>
+                <p>同时，我们也关注游戏背后的创作者、文化与历史脉络。有时一篇背景解读、一段开发轶事，比游戏本身更能让人理解“为什么值得玩”。如果你也认同这种节奏，或许这里会是你的落脚点。</p>
+            </div>
+        </section>
+
+        <!-- FAQ 摘要区 -->
+        <section>
+            <h2 class="section-title">一些你可能想知道的</h2>
+            <div class="faq-summary">
+                <div class="faq-item">
+                    <div class="faq-q">内容更新的频率如何？</div>
+                    <div class="faq-a">我们保持每周至少一次有质量的更新，有时是深度推荐，有时是一段随笔。不追求日更，但每篇都经过思考。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">会收录商业大作吗？</div>
+                    <div class="faq-a">只要作品本身有值得探讨的内容，无论大小制作都会考虑。但我们更倾向于那些有独特表达或设计巧思的作品。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">是否有社区或讨论区？</div>
+                    <div class="faq-a">目前以内容分享为主，未来会开放安静的交流角落。我们更希望是志趣相投者的自然聚集，而非刻意运营的社群。</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-q">如何联系或提供推荐？</div>
+                    <div class="faq-a">你可以通过页面底部的联系方式找到我们，任何真诚的推荐或意见都会被认真阅读。</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 底部链接区 -->
+        <div class="footer-links">
+            <p>如果你好奇我们的日常与观点，可以随时来 <a href="https://portal-official-igame.com">爱游戏</a> 坐坐。</p>
+            <p style="margin-top: 1.2rem; font-size: 0.88rem; color: #6b7f93;">© 2025 爱游戏 · 温和而丰富的游戏世界</p>
+        </div>
+
+    </main>
+
+</body>
+</html>
